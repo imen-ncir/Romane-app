@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1080937249219",
+    "project_id": "romane-dev",
+    "storage_bucket": "romane-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080937249219:android:9010e29e35565a0d6d6576",
+        "android_client_info": {
+          "package_name": "com.kairos.romane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080937249219-hg563l85hqbdd9aqs3amu9fmt5pfcte1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3uFFvjpw2148LEeYnAx36Gbv0LXvG89s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080937249219-hg563l85hqbdd9aqs3amu9fmt5pfcte1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "581502466016-nvnke6cqga6id9r6k78o9ufklf8iukin.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kairos.romane"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
