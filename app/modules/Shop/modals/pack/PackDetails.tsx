@@ -59,37 +59,37 @@ export const PackDetails = ({navigation, route}: BaseScreenProps) => {
   }, []);
 
   const handlePressBuy = async () => {
-    if (!pack) return;
-    const canBuy = pack.isFree ? true : await PaymentApi.canBuy();
-    if (canBuy) {
-      const confirm = await ConfirmService.show(
-        'Voulez-vous acheter ce pack ?',
-      );
-      if (confirm) {
-        setLoading(true);
-        const response = await ShopApi.buyPack(id);
-        setLoading(false);
-        if (response.isRight()) {
-          addSubject(response.value.getValue());
-          ToastService.showToast(
-            'Achat terminé',
-            'success',
-            'Vous trouverez le contenu de ce pack dans vos matières !',
-          );
-          navigation.goBack();
-        } else {
-          Alert.alert(
-            'Achat non effectué',
-            "Il semble y avoir un problème ce pack. Pour plus d'information, contactez le vendeur ou l'administrateur de la plateforme.",
-          );
-        }
-      }
-    } else {
-      Alert.alert(
-        REQUIREMENT,
-        'Vous devez d`abord ajouter un moyen de paiement pour pouvoir acheter un pack !',
-      );
-    }
+    // if (!pack) return;
+    // const canBuy = pack.isFree ? true : await PaymentApi.canBuy();
+    // if (canBuy) {
+    //   const confirm = await ConfirmService.show(
+    //     'Voulez-vous acheter ce pack ?',
+    //   );
+    //   if (confirm) {
+    //     setLoading(true);
+    //     const response = await ShopApi.buyPack(id);
+    //     setLoading(false);
+    //     if (response.isRight()) {
+    //       addSubject(response.value.getValue());
+    //       ToastService.showToast(
+    //         'Achat terminé',
+    //         'success',
+    //         'Vous trouverez le contenu de ce pack dans vos matières !',
+    //       );
+    //       navigation.goBack();
+    //     } else {
+    //       Alert.alert(
+    //         'Achat non effectué',
+    //         "Il semble y avoir un problème ce pack. Pour plus d'information, contactez le vendeur ou l'administrateur de la plateforme.",
+    //       );
+    //     }
+    //   }
+    // } else {
+    //   Alert.alert(
+    //     REQUIREMENT,
+    //     'Vous devez d`abord ajouter un moyen de paiement pour pouvoir acheter un pack !',
+    //   );
+    // }
   };
 
   const handlePressOwner = async () => {

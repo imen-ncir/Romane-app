@@ -59,11 +59,11 @@ export const LoginTab = ({}: LoginTabProps) => {
         onSubmit={handleSignInWithEmail}
         onResetPassword={handleResetPassword}
       />
-      <Divider thickness={2} />
+      {/* <Divider thickness={2} />
       <SocialConnect
         signInWithFacebook={handleSignWithFacebook}
         signInWithGoogle={handleSignWithGoogle}
-      />
+      /> */}
     </View>
   );
 };

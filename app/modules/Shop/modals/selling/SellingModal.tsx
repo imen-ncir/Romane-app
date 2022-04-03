@@ -149,36 +149,36 @@ export const SellingModal = ({navigation, route}: BaseScreenProps) => {
     });
   }, []);
   const handleSellPack = async (data: PackInfoFormData) => {
-    if (!selectedSubject || !selection || !data) return;
+    // if (!selectedSubject || !selection || !data) return;
 
-    const canSell = data.isFree ? true : await PaymentApi.canSell();
-    if (canSell) {
-      const response = await ShopApi.sellPack({
-        subjectId: selectedSubject,
-        chapterIds: selection,
-        ...data,
-      });
-      if (response.isRight()) {
-        addPack(response.value.getValue());
-        ToastService.showToast(
-          'Mise en ligne réussie',
-          'success',
-          `Votre pack est maintenant disponible sur le store.`,
-        );
-        navigation.goBack();
-      } else {
-        ToastService.showToast(
-          ERROR_GENERIC,
-          'error',
-          response.value.toString(),
-        );
-      }
-    } else {
-      Alert.alert(
-        REQUIREMENT,
-        'Vous devez créer un compte vendeur dans votre profil afin de pouvoir vendre des packs.',
-      );
-    }
+    // const canSell = data.isFree ? true : await PaymentApi.canSell();
+    // if (canSell) {
+    //   const response = await ShopApi.sellPack({
+    //     subjectId: selectedSubject,
+    //     chapterIds: selection,
+    //     ...data,
+    //   });
+    //   if (response.isRight()) {
+    //     addPack(response.value.getValue());
+    //     ToastService.showToast(
+    //       'Mise en ligne réussie',
+    //       'success',
+    //       `Votre pack est maintenant disponible sur le store.`,
+    //     );
+    //     navigation.goBack();
+    //   } else {
+    //     ToastService.showToast(
+    //       ERROR_GENERIC,
+    //       'error',
+    //       response.value.toString(),
+    //     );
+    //   }
+    // } else {
+    //   Alert.alert(
+    //     REQUIREMENT,
+    //     'Vous devez créer un compte vendeur dans votre profil afin de pouvoir vendre des packs.',
+    //   );
+    // }
   };
 
   const goNext = () => {

@@ -43,9 +43,9 @@ export default function LoginForm({onSubmit, onResetPassword}: LoginFormProps) {
         wrapperStyle={styles.input}
       />
       <PrimaryButton text="Connexion" onPress={handleSubmit(onSubmit)} />
-      {onResetPassword && (
+      {/* {onResetPassword && (
         <LinkButton text="Mot de passe oublié ?" onPress={() => {}} />
-      )}
+      )} */}
     </View>
   );
 }

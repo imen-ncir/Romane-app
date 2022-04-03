@@ -54,11 +54,11 @@ export const RegisterTab = ({}: RegisterTabProps) => {
     <View style={cards.card}>
       <Text style={cards.cardTitle}>S'inscrire</Text>
       <RegisterForm onSubmit={handleRegisterWithEmail} />
-      <Divider thickness={2} />
+      {/* <Divider thickness={2} />
       <SocialConnect
         signInWithFacebook={handleRegisterWithFacebook}
         signInWithGoogle={handleRegisterWithGoogle}
-      />
+      /> */}
     </View>
     </ScrollView>
     </KeyboardAvoidingView>
