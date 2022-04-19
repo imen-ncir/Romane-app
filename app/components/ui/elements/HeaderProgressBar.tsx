@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import {Colors} from '../../../constants';
-import {ProgressBar} from 'react-native-paper';
+import { StyleSheet, View, Text } from 'react-native';
+import { Colors } from '../../../constants';
+import { ProgressBar } from 'react-native-paper';
 
 interface HeaderProgressBarProps {
   label: string;
@@ -17,8 +17,10 @@ export const HeaderProgressBar = ({
   style,
   ...props
 }: HeaderProgressBarProps) => {
-  const percent = Math.floor((value * 100) / max) / 100;
-
+  let percent = 0;
+  if (max != 0 && value != 0) {
+    percent = Math.floor((value * 100) / max) / 100;
+  }
   return (
     <View style={style} {...props}>
       <Text style={styles.progressText}>{`${value} / ${max} ${label}`}</Text>

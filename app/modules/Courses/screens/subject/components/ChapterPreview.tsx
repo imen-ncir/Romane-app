@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {BaseCard, IconButton} from '../../../../../components/ui';
-import {layouts} from '../../../../../shared/styles';
-import {Menu, ProgressBar} from 'react-native-paper';
-import {Colors} from '../../../../../constants';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {ChapterDTO} from '../../../services/chapter/dto';
+import { View, Text, StyleSheet } from 'react-native';
+import { BaseCard, IconButton } from '../../../../../components/ui';
+import { layouts } from '../../../../../shared/styles';
+import { Menu, ProgressBar } from 'react-native-paper';
+import { Colors } from '../../../../../constants';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ChapterDTO } from '../../../services/chapter/dto';
 
 interface ChapterPreviewProps {
   item: ChapterDTO;
@@ -24,7 +24,7 @@ export const ChapterPreview = ({
   onPressDelete,
   onPressMove,
 }: ChapterPreviewProps) => {
-  const {title, flashcardsNumber, completedNumber} = item;
+  const { title, flashcardsNumber, completedNumber } = item;
 
   const [visible, setVisible] = React.useState(false);
   const openMenu = () => setVisible(true);
@@ -69,9 +69,8 @@ export const ChapterPreview = ({
       </Menu>
     );
   };
-
   return (
-    <BaseCard style={[styles.container, style, {height: 80}]}>
+    <BaseCard style={[styles.container, style, { height: 80 }]}>
       <IconButton
         icon="play"
         onPress={onPressTest}
@@ -85,11 +84,18 @@ export const ChapterPreview = ({
             <View style={[layouts.row, styles.bottom]}>
               <Text style={styles.number}>{`${flashcardsNumber} cartes`}</Text>
               <View style={[styles.progressContainer]}>
-                <ProgressBar
-                  progress={completedNumber / flashcardsNumber}
-                  style={styles.progress}
-                  color={Colors.green}
-                />
+                {flashcardsNumber > 0 ?
+                  <ProgressBar
+                    progress={completedNumber / flashcardsNumber}
+                    style={styles.progress}
+                    color={Colors.green}
+                  />
+                  : <ProgressBar
+                    progress={0}
+                    style={styles.progress}
+                    color={Colors.green}
+                  />
+                }
               </View>
             </View>
           </TouchableOpacity>

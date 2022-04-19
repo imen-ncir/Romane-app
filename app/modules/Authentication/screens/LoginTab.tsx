@@ -26,27 +26,27 @@ export const LoginTab = ({}: LoginTabProps) => {
     }
   };
 
-  const handleSignWithFacebook = async () => {
-    setLoading(true, SIGN_IN_LOADING_MESSAGE);
-    try {
-      await new AuthService().signInWithFacebook();
-    } catch (error) {
-      ToastService.showToast('Erreur', 'error', error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const handleSignWithFacebook = async () => {
+  //   setLoading(true, SIGN_IN_LOADING_MESSAGE);
+  //   try {
+  //     await new AuthService().signInWithFacebook();
+  //   } catch (error) {
+  //     ToastService.showToast('Erreur', 'error', error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-  const handleSignWithGoogle = async () => {
-    setLoading(true, SIGN_IN_LOADING_MESSAGE);
-    try {
-      await new AuthService().signInWithGoogle();
-    } catch (error) {
-      ToastService.showToast('Erreur', 'error', error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const handleSignWithGoogle = async () => {
+  //   setLoading(true, SIGN_IN_LOADING_MESSAGE);
+  //   try {
+  //     await new AuthService().signInWithGoogle();
+  //   } catch (error) {
+  //     ToastService.showToast('Erreur', 'error', error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const handleResetPassword = async () => {
     ToastService.showToast('Pas encore disponible');

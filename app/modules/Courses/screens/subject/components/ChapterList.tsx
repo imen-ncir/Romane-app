@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, StyleSheet, Text} from 'react-native';
+import { FlatList, StyleSheet, Text } from 'react-native';
 import {
   Colors,
   ERROR_GENERIC,
@@ -7,13 +7,13 @@ import {
   RouteNames,
   WORK_IN_PROGRESS,
 } from '../../../../../constants';
-import {useRecoilChapters} from '../../../../../contexts/atoms/chapters';
-import {ConfirmService, ToastService} from '../../../../../shared/services';
-import {theme} from '../../../../../shared/styles/theme';
-import {TestApi} from '../../../../Tests';
-import {ChapterApi} from '../../../services/chapter/api';
-import {ChapterDTO} from '../../../services/chapter/dto';
-import {ChapterPreview} from './ChapterPreview';
+import { useRecoilChapters } from '../../../../../contexts/atoms/chapters';
+import { ConfirmService, ToastService } from '../../../../../shared/services';
+import { theme } from '../../../../../shared/styles/theme';
+import { TestApi } from '../../../../Tests';
+import { ChapterApi } from '../../../services/chapter/api';
+import { ChapterDTO } from '../../../services/chapter/dto';
+import { ChapterPreview } from './ChapterPreview';
 
 interface ChapterListProps {
   navigation: any;
@@ -26,7 +26,7 @@ export const ChapterList = ({
   chapters,
   style,
 }: ChapterListProps) => {
-  const {removeChapter} = useRecoilChapters();
+  const { removeChapter } = useRecoilChapters();
 
   const handlePressTest = async (chapterId: string) => {
     const response = await TestApi.generateTest([chapterId]);
@@ -39,7 +39,7 @@ export const ChapterList = ({
     }
   };
   const handlePressChapter = async (chapterId: string) => {
-    navigation.push(RouteNames.ChapterDetails, {id: chapterId});
+    navigation.push(RouteNames.ChapterDetails, { id: chapterId });
   };
   const handlePressDelete = async (chapterId: string) => {
     const confirm = await ConfirmService.show();
@@ -71,7 +71,7 @@ export const ChapterList = ({
       ToastService.showToast(ERROR_GENERIC, 'error', response.value.toString());
     }
   };
-
+  console.log("--chapters--" + JSON.stringify(chapters))
   return (
     <FlatList
       keyExtractor={item => item.id}
@@ -82,11 +82,11 @@ export const ChapterList = ({
       contentContainerStyle={[styles.list, style]}
       data={chapters}
       ListEmptyComponent={() => (
-        <Text style={[theme.h4, {color: Colors.dark, textAlign: 'center'}]}>
+        <Text style={[theme.h4, { color: Colors.dark, textAlign: 'center' }]}>
           Aucun chapitre
         </Text>
       )}
-      renderItem={({item}) => (
+      renderItem={({ item }) => (
         <ChapterPreview
           item={item}
           onPressMove={() => handlePressMove(item.id)}

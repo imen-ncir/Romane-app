@@ -79,7 +79,7 @@ export const Stats = ({navigation}: any) => {
           style={styles.successBar}
         />
       </Header>
-      <View style={[layouts.content, styles.content]}>
+       <View style={[layouts.content, styles.content]}>
         <Section>
           <View style={[layouts.row]}>
             <Text style={styles.test}>{`Dernier test : ${
@@ -95,11 +95,11 @@ export const Stats = ({navigation}: any) => {
             contentContainerStyle={styles.list}
             data={subjects}
             renderItem={({item, index}) => (
-              <SubjectStatsListItem key={index} item={item} />
+               <SubjectStatsListItem key={index} item={item} />
             )}
           />
         </Section>
-      </View>
+      </View> 
     </View>
   );
 };

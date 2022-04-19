@@ -146,7 +146,7 @@ export const Profile = ({navigation}: any) => {
         )}
       </Header>
       <View style={layouts.content}>
-        <Section title="Mes badges">
+        {/* <Section title="Mes badges">
           <FlatList
             keyExtractor={(item, index) => index.toString()}
             horizontal={true}
@@ -156,7 +156,7 @@ export const Profile = ({navigation}: any) => {
             data={badges}
             renderItem={({item}) => renderBadge(item)}
           />
-        </Section>
+        </Section> */}
         <Section title="Bio">
           {isEditing ? (
             <TextArea
@@ -168,13 +168,13 @@ export const Profile = ({navigation}: any) => {
             <Text style={[typos.paragraph]}>{bio}</Text>
           )}
         </Section>
-        <Section title="Mes packs en vente">
+        {/* <Section title="Mes packs en vente">
           <TwoColumnPackList
             style={styles.packs}
             packs={packs}
             onPressItem={handlePressPack}
           />
-        </Section>
+        </Section> */}
       </View>
     </View>
   );

@@ -1,10 +1,10 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {Modal, Portal} from 'react-native-paper';
-import {b1, b2, b3, b4} from '../../../assets/images/badges';
-import {Colors} from '../../../constants';
-import {BadgeDTO} from '../../../modules/Profile/services/dto';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Modal, Portal } from 'react-native-paper';
+import { b1, b2, b3, b4 } from '../../../assets/images/badges';
+import { Colors } from '../../../constants';
+import { BadgeDTO } from '../../../modules/Profile/services/dto';
 
 interface BadgeProps {
   item: BadgeDTO;
@@ -31,18 +31,18 @@ const getBadge = (id: string) => {
 };
 
 const ratio = 1.5;
-export const Badge = ({item, size = 64, style}: BadgeProps) => {
+export const Badge = ({ item, size = 64, style }: BadgeProps) => {
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   return (
     <>
-      <View style={{height: size, width: size, margin: 5}}>
+      <View style={{ height: size, width: size, margin: 5 }}>
         <TouchableOpacity disabled={!item.enabled} onPress={showModal}>
           <View
             style={[
               styles.wrapper,
-              {height: size, width: size, backgroundColor: item.color},
+              { height: size, width: size, backgroundColor: item.color },
               style,
               !item.enabled ? styles.wrapperDisabled : null,
             ]}></View>
@@ -68,16 +68,12 @@ export const Badge = ({item, size = 64, style}: BadgeProps) => {
           onDismiss={hideModal}
           contentContainerStyle={modalStyle.modal}>
           <View style={modalStyle.hero}>
-            <View style={[modalStyle.wrapper, {backgroundColor: item.color}]}>
+            <View style={[modalStyle.wrapper, { backgroundColor: item.color }]}>
               <Image source={getBadge(item.id)} style={modalStyle.badge} />
             </View>
           </View>
           <Text style={modalStyle.badgeTitle}>Titre du badge</Text>
-          <Text style={modalStyle.paragraph}>
-            Vestibulum semper mauris lorem, et bibendum lacus sollicitudin ut.
-            Vestibulum semper mauris lorem, et bibendum lacus sollicitudin ut.
-            Vestibulum semper mauris lorem, et bibendum lacus sollicitudin ut.
-          </Text>
+          <Text style={modalStyle.paragraph} />
         </Modal>
       </Portal>
     </>

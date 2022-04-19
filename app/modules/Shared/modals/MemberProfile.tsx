@@ -61,13 +61,13 @@ export const MemberProfile = ({navigation, route}: BaseScreenProps) => {
         <Section title="Bio">
           <Text style={[typos.paragraph]}>{bio}</Text>
         </Section>
-        <Section title="Mes packs en vente">
+        {/* <Section title="Mes packs en vente">
           <TwoColumnPackList
             style={styles.packs}
             packs={packs}
             onPressItem={handlePressPack}
           />
-        </Section>
+        </Section> */}
       </View>
     </View>
   );

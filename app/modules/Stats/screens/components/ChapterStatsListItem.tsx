@@ -1,18 +1,18 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import {Colors} from '../../../../constants/colors';
-import {layouts} from '../../../../shared/styles';
-import {BaseCard} from '../../../../components/ui';
-import {calcPercent} from '../../../../shared/utils';
-import {ProgressBar} from 'react-native-paper';
-import {ChapterStatDTO} from '../../services';
+import { View, StyleSheet, Text } from 'react-native';
+import { Colors } from '../../../../constants/colors';
+import { layouts } from '../../../../shared/styles';
+import { BaseCard } from '../../../../components/ui';
+import { calcPercent } from '../../../../shared/utils';
+import { ProgressBar } from 'react-native-paper';
+import { ChapterStatDTO } from '../../services';
 
 interface ChapterStatsListItemProps {
   item: ChapterStatDTO;
 }
 
-export const ChapterStatsListItem = ({item}: ChapterStatsListItemProps) => {
-  const {chapter, completed, total} = item;
+export const ChapterStatsListItem = ({ item }: ChapterStatsListItemProps) => {
+  const { chapter, completed, total } = item;
 
   return (
     <BaseCard style={[layouts.row, styles.container]}>
@@ -26,11 +26,19 @@ export const ChapterStatsListItem = ({item}: ChapterStatsListItemProps) => {
         </View>
         <View style={[layouts.row, styles.line]}>
           <View style={styles.progressContainer}>
-            <ProgressBar
-              progress={completed / total}
-              style={styles.progress}
-              color={Colors.green}
-            />
+            {total > 0 ?
+              <ProgressBar
+                progress={completed / total}
+                style={styles.progress}
+                color={Colors.green}
+              />
+              :
+              <ProgressBar
+                progress={completed / total}
+                style={styles.progress}
+                color={Colors.green}
+              />
+            }
           </View>
           <Text style={styles.bottomText}>{`${completed}/${total}`}</Text>
         </View>

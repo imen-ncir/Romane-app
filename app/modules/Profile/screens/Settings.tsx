@@ -15,11 +15,11 @@ export const Settings = ({navigation}: any) => {
   const {signOut} = useAuthContext();
 
   const parameters: ISettingListItem[] = [
-    {
-      icon: 'help',
-      text: 'Aide',
-      action: () => navigation.push(RouteNames.Help),
-    },
+    // {
+    //   icon: 'help',
+    //   text: 'Aide',
+    //   action: () => navigation.push(RouteNames.Help),
+    // },
     {
       icon: 'logout',
       text: 'Déconnexion',

@@ -75,13 +75,13 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>TODO</string>
+	<string>Cette autorisation est requise pour ajouter du contenu dans Romane.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Cette application utilise le microphone pour la création des Flashcard avec Audio.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>TODO</string>
+	<string>Cette autorisation est requise pour ajouter du contenu dans Romane</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>

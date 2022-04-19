@@ -1,19 +1,19 @@
-import React, {useState} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import {ActivityIndicator, ProgressBar} from 'react-native-paper';
-import {PrimaryButton} from '../../../components/ui';
-import {RouteNames} from '../../../constants';
-import {FlashcardScoreValues} from '../../../constants/app';
-import {Colors} from '../../../constants/colors';
-import {ToastService} from '../../../shared/services';
-import {layouts} from '../../../shared/styles';
-import {theme} from '../../../shared/styles/theme';
-import {TestApi, TestRunDTO} from '../services';
-import {Flashcard} from './components';
+import React, { useState } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
+import { ActivityIndicator, ProgressBar } from 'react-native-paper';
+import { PrimaryButton } from '../../../components/ui';
+import { RouteNames } from '../../../constants';
+import { FlashcardScoreValues } from '../../../constants/app';
+import { Colors } from '../../../constants/colors';
+import { ToastService } from '../../../shared/services';
+import { layouts } from '../../../shared/styles';
+import { theme } from '../../../shared/styles/theme';
+import { TestApi, TestRunDTO } from '../services';
+import { Flashcard } from './components';
 
 const initResult = (test: TestRunDTO): TestResult => {
-  const {id, cards} = test;
-  return {testId: id, details: [], score: 0, total: cards.length};
+  const { id, cards } = test;
+  return { testId: id, details: [], score: 0, total: cards.length };
 };
 
 export interface TestResult {
@@ -30,7 +30,7 @@ export interface ResultLine {
   value: number;
 }
 
-export const TestRun = ({navigation, route}: any) => {
+export const TestRun = ({ navigation, route }: any) => {
   const [index, setIndex] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const test: TestRunDTO = route.params?.test;
@@ -43,7 +43,7 @@ export const TestRun = ({navigation, route}: any) => {
     return null;
   }
 
-  const {cards} = test;
+  const { cards } = test;
   if (!cards) {
     navigation.goBack();
     return null;
@@ -53,7 +53,7 @@ export const TestRun = ({navigation, route}: any) => {
     setLoading(true);
     // Store result
     const currentCard = cards[index];
-    const newResult = {...result};
+    const newResult = { ...result };
 
     const isSuccess = value === (FlashcardScoreValues.KNOWN as number);
     // Update card score
@@ -108,11 +108,19 @@ export const TestRun = ({navigation, route}: any) => {
           <Text style={[theme.h4, styles.progressText]}>
             Question {current}/{cards.length}
           </Text>
-          <ProgressBar
-            color={Colors.purple}
-            progress={current / cards.length}
-            style={styles.progressBar}
-          />
+          {cards.length > 0 ?
+            <ProgressBar
+              color={Colors.purple}
+              progress={current / cards.length}
+              style={styles.progressBar}
+            />
+            :
+            <ProgressBar
+              color={Colors.purple}
+              progress={0}
+              style={styles.progressBar}
+            />
+          }
         </View>
       </View>
       {!loading ? (

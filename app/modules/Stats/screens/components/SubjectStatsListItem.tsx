@@ -1,28 +1,28 @@
-import React, {useState} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import {Colors} from '../../../../constants/colors';
-import {layouts} from '../../../../shared/styles';
-import {BaseCard} from '../../../../components/ui';
-import {calcPercent} from '../../../../shared/utils';
-import {ProgressBar} from 'react-native-paper';
-import {getIcon} from '../../../../assets/icons';
-import {SubjectStatDTO} from '../../services';
-import {ChapterStatsListItem} from './ChapterStatsListItem';
-import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
+import React, { useState } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
+import { Colors } from '../../../../constants/colors';
+import { layouts } from '../../../../shared/styles';
+import { BaseCard } from '../../../../components/ui';
+import { calcPercent } from '../../../../shared/utils';
+import { ProgressBar } from 'react-native-paper';
+import { getIcon } from '../../../../assets/icons';
+import { SubjectStatDTO } from '../../services';
+import { ChapterStatsListItem } from './ChapterStatsListItem';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 interface SubjectStatsListItemProps {
   item: SubjectStatDTO;
 }
 
-export const SubjectStatsListItem = ({item}: SubjectStatsListItemProps) => {
-  const {completed, total, subject, color, chapters} = item;
+export const SubjectStatsListItem = ({ item }: SubjectStatsListItemProps) => {
+  const { completed, total, subject, color, chapters } = item;
   const [expanded, setExpanded] = useState<boolean>(false);
 
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setExpanded(curr => !curr)}>
         <BaseCard style={[layouts.row, styles.container]}>
-          <View style={[styles.indicator, {backgroundColor: color}]} />
+          <View style={[styles.indicator, { backgroundColor: color }]} />
           <View style={styles.expand}>
             {getIcon(
               expanded ? 'expand-less' : 'expand-more',
@@ -42,11 +42,18 @@ export const SubjectStatsListItem = ({item}: SubjectStatsListItemProps) => {
             </View>
             <View style={[layouts.row, styles.line]}>
               <View style={styles.progressContainer}>
-                <ProgressBar
-                  progress={completed / total}
-                  style={styles.progress}
-                  color={Colors.green}
-                />
+                {total > 0 ?
+                  <ProgressBar
+                    progress={completed / total}
+                    style={styles.progress}
+                    color={Colors.green}
+                  />
+                  : <ProgressBar
+                    progress={0}
+                    style={styles.progress}
+                    color={Colors.green}
+                  />
+                }
               </View>
               <Text style={styles.bottomText}>{`${completed}/${total}`}</Text>
             </View>

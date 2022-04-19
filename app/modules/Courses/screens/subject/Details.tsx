@@ -163,11 +163,11 @@ export const SubjectDetails = ({navigation, route}: SubjectDetailProps) => {
               iconName: 'share',
               callback: handleClickShare,
             },
-            {
-              name: 'Vendre',
-              iconName: 'sell',
-              callback: handleClickSell,
-            },
+            // {
+            //   name: 'Vendre',
+            //   iconName: 'sell',
+            //   callback: handleClickSell,
+            // },
             {
               iconName: 'delete',
               name: 'Supprimer',

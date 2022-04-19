@@ -38,9 +38,6 @@ export default function AuthPage() {
       <View style={styles.content}>
         <View style={styles.header}>
           <Text style={[styles.mainTitle]}>{displayName}</Text>
-          <Text style={[styles.subTitle]}>
-            {'Lorem ipsum dolor sit caret'}
-          </Text>
         </View>
         <TabView
           navigationState={{ index, routes }}

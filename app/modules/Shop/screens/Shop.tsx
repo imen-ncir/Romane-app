@@ -91,7 +91,7 @@ export const Shop = ({navigation}: BaseScreenProps) => {
   }, [filter, packs]);
 
   const handleClickAdd = async () => {
-    navigation.push(ModalNames.Sell);
+   // navigation.push(ModalNames.Sell);
   };
 
   const handleFilterChange = (category?: string, value?: string) => {
@@ -146,7 +146,8 @@ export const Shop = ({navigation}: BaseScreenProps) => {
             ) : (
               <PackList packs={filteredPacks} onPress={handlePressPack} />
             )}
-        {/* </ScrollView> */}
+        {/* </ScrollView> */} 
+
       </View>
     </View>
   );

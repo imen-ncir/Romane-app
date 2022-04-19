@@ -17,15 +17,15 @@ export const AccountHeader = ({onPressMoney, user}: AccountHeaderProps) => {
     <View style={[layouts.row, styles.container]}>
       <View style={styles.avatarContainer}>
         <Avatar url={user.photoURL || undefined} />
-        <View style={styles.tag}>
+        {/* <View style={styles.tag}>
           <TouchableOpacity onPress={onPressMoney}>
             <MoneyTag value={user.credits} />
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
       <View style={styles.nameContainer}>
         <HeaderTitle title={user.username} />
-        <Text style={[app.text, styles.experience]}>{user.experience} XP</Text>
+        {/* <Text style={[app.text, styles.experience]}>{user.experience} XP</Text> */}
       </View>
     </View>
   );
