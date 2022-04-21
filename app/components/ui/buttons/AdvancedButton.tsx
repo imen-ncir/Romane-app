@@ -1,9 +1,9 @@
 import React from 'react';
-import {Dimensions} from 'react-native';
-import {IBaseButtonProps} from './BaseButton';
-import {FloatingButton} from './FloatingButton';
+import { Dimensions } from 'react-native';
+import { IBaseButtonProps } from './BaseButton';
+import { FloatingButton } from './FloatingButton';
 
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 interface AdvancedButtonProps extends IBaseButtonProps {
   style?: any;
@@ -22,7 +22,7 @@ export const AdvancedButton = ({
     bottom={navbarSize / 2 + btnSize / 2}
     size={btnSize}
     left={width / 2 - btnSize}
-    style={style}
+    style={[style, { marginBottom: 24 }]}
     {...props}
   />
 );

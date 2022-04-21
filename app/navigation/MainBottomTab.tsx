@@ -1,15 +1,15 @@
 import * as React from 'react';
 import 'react-native-gesture-handler';
-import {Colors, RouteNames} from '../constants';
+import { Colors, RouteNames } from '../constants';
 import {
   BottomTabBar,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import {EmptyScreen, TabAnchor} from './components';
-import {StyleSheet, View} from 'react-native';
-import {IS_IPHONE_X} from '../shared/utils';
-import {CourseStack, ProfileStack, ShopStack, StatStack} from './stacks';
-import {getIcon} from '../assets/icons';
+import { EmptyScreen, TabAnchor } from './components';
+import { StyleSheet, View } from 'react-native';
+import { IS_IPHONE_X } from '../shared/utils';
+import { CourseStack, ProfileStack, ShopStack, StatStack } from './stacks';
+import { getIcon } from '../assets/icons';
 
 const BottomBar = createBottomTabNavigator();
 
@@ -58,7 +58,7 @@ export const MainBottomTab: React.FC<MainBottomTabProps> = ({
         name={RouteNames.Home}
         component={CourseStack}
         options={{
-          tabBarIcon: ({color, focused, size}) =>
+          tabBarIcon: ({ color, focused, size }) =>
             getIcon('home', size, color, focused),
         }}
       />
@@ -66,30 +66,32 @@ export const MainBottomTab: React.FC<MainBottomTabProps> = ({
         name={RouteNames.Stats}
         component={StatStack}
         options={{
-          tabBarIcon: ({color, focused, size}) =>
+          tabBarIcon: ({ color, focused, size }) =>
             getIcon('chart', size, color, focused),
         }}
       />
-      <BottomBar.Screen
+      {/* <BottomBar.Screen
         name={RouteNames.Empty}
         component={EmptyScreen}
         options={{
           tabBarButton: props => <TabAnchor {...props} color={barColor} />,
         }}
-      />
-      <BottomBar.Screen
+      /> */}
+
+      {/* <BottomBar.Screen
         name={RouteNames.Shop}
         component={ShopStack}
         options={{
           tabBarIcon: ({color, focused, size}) =>
             getIcon('shop', size, color, focused),
         }}
-      />
+      /> */}
+
       <BottomBar.Screen
         name={RouteNames.Profile}
         component={ProfileStack}
         options={{
-          tabBarIcon: ({color, focused, size}) =>
+          tabBarIcon: ({ color, focused, size }) =>
             getIcon('user', size, color, focused),
         }}
       />
