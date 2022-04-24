@@ -13,24 +13,30 @@ export interface DataMessage {
   doc_id: string;
 }
 
-export const attachMessagesListener = (
+export const attachMessagesListener = async (
   conversationId: string,
   callback: (message?: DataMessage) => any,
 ) => {
-  const collectionRef = firestore()
+  const collectionRef = await firestore()
     .collection('conversations')
     .doc(conversationId)
     .collection('messages');
 
-  return collectionRef.onSnapshot(snapshot => {
-    if (!snapshot.empty) {
-      snapshot.docChanges().forEach(change => {
-        if (change.type === 'added') {
-          callback(change.doc.data() as DataMessage);
-        }
-      });
-    } else {
-      callback(undefined);
-    }
-  });
+  try {
+    return collectionRef.onSnapshot(snapshot => {
+      if (snapshot && !snapshot.empty) {
+        snapshot.docChanges().forEach(change => {
+          if (change.type === 'added') {
+            callback(change.doc.data() as DataMessage);
+          }
+        });
+      } else {
+        callback(undefined);
+      }
+    });
+  }
+  catch (error) {
+    console.log(error)
+  }
+
 };
