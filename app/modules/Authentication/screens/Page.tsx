@@ -8,12 +8,14 @@ import { TabView, SceneMap } from 'react-native-tab-view';
 import { KeyboardShift } from '../../../components/ui/keyboard/KeyboardShift';
 import { LoginTab, RegisterTab } from '.';
 import { LoginTabBar } from './components';
+import { Provider } from 'react-native-paper';
+import { ModalCGU } from './ModalCGU';
 
 const { width } = Dimensions.get('screen');
 
 const RoutePlaceHolder = () => <View></View>;
 const LoginRoute = () => <LoginTab />;
-const RegisterRoute = () => <RegisterTab />;
+//const RegisterRoute = () => <RegisterTab />;
 const tabRoutes = [
   { key: 'login', title: 'Se connecter' },
   { key: 'register', title: "S'inscrire" },
@@ -22,13 +24,20 @@ const tabRoutes = [
 export default function AuthPage() {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState(tabRoutes);
+  const [visible, setVisible] = React.useState(false);
+
+
   const renderScene = SceneMap({
     login: LoginRoute,
-    register: RegisterRoute,
+    register: () => <RegisterTab showModal={showModal} />,
   });
 
+  const showModal = () => {
+    setVisible(true)
+  };
+  const hideModal = () => setVisible(false);
   return (
-    <SafeAreaView style={styles.container}>
+    <Provider>
       <RoundedBackground
         customStyles={styles.roundedBackground}
         customHeight={400}
@@ -51,7 +60,8 @@ export default function AuthPage() {
           tabBarPosition="top"
         />
       </View>
-    </SafeAreaView>
+      <ModalCGU visible={visible} hideModal={hideModal} />
+    </Provider>
   );
 }
 

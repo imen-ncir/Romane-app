@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:RomaneApp.xcodeproj">
+      location = "group:/Users/macbookpro/Desktop/ob-mobility/imen/free/Mathis-Romane/Romane-app/ios/RomaneApp">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:RomaneApp.xcodeproj">
    </FileRef>
 </Workspace>

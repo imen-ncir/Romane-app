@@ -1,22 +1,23 @@
-import React from 'react';
-import {View, Text,KeyboardAvoidingView,ScrollView,Platform,StyleSheet} from 'react-native';
-import {ToastService} from '../../../shared/services/ToastService';
-import {AuthService} from '../services/AuthService';
-import {useAppContext} from '../../../contexts/app.context';
-import {REGISTRATION_LOADING_MESSAGE} from '../../../constants/messages';
-import {cards} from '../../../shared/styles/cards';
-import RegisterForm, {RegisterFormData} from './forms/RegisterForm';
-import {Divider} from '../../../components/ui/layouts/Divider';
-import {SocialConnect} from './components';
+import React, { useState } from 'react';
+import { View, Text, KeyboardAvoidingView, ScrollView, Platform, StyleSheet } from 'react-native';
+import { ToastService } from '../../../shared/services/ToastService';
+import { AuthService } from '../services/AuthService';
+import { useAppContext } from '../../../contexts/app.context';
+import { REGISTRATION_LOADING_MESSAGE } from '../../../constants/messages';
+import { cards } from '../../../shared/styles/cards';
+import RegisterForm, { RegisterFormData } from './forms/RegisterForm';
+import { Divider } from '../../../components/ui/layouts/Divider';
+import { SocialConnect } from './components';
 
-interface RegisterTabProps {}
+interface RegisterTabProps {
+  showModal: () => void;
+}
 
-export const RegisterTab = ({}: RegisterTabProps) => {
-  const {setLoading} = useAppContext();
-
+export const RegisterTab = ({ showModal }: RegisterTabProps) => {
+  const { setLoading } = useAppContext();
   const handleRegisterWithEmail = async (data: RegisterFormData) => {
     setLoading(true, REGISTRATION_LOADING_MESSAGE);
-    const {username, email, password} = data;
+    const { username, email, password } = data;
     try {
       await new AuthService().register(email, password, username);
     } catch (error) {
@@ -48,30 +49,31 @@ export const RegisterTab = ({}: RegisterTabProps) => {
     }
   };
 
+
   return (
     <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? "padding" : undefined} style={styles.keyboardView}>
-    <ScrollView keyboardShouldPersistTaps='handled' style={styles.scrollView} showsVerticalScrollIndicator={false}> 
-    <View style={cards.card}>
-      <Text style={cards.cardTitle}>S'inscrire</Text>
-      <RegisterForm onSubmit={handleRegisterWithEmail} />
-      {/* <Divider thickness={2} />
+      <ScrollView keyboardShouldPersistTaps='handled' style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        <View style={cards.card}>
+          <Text style={cards.cardTitle}>S'inscrire</Text>
+          <RegisterForm onSubmit={handleRegisterWithEmail} openModal={showModal} />
+          {/* <Divider thickness={2} />
       <SocialConnect
         signInWithFacebook={handleRegisterWithFacebook}
         signInWithGoogle={handleRegisterWithGoogle}
       /> */}
-    </View>
-    </ScrollView>
+        </View>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
-  keyboardView:{
+  keyboardView: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
   },
-  scrollView:{
+  scrollView: {
     flex: 1,
     width: "100%"
   }
